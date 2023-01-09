@@ -4,10 +4,25 @@ int main()
 {
     string a;
     cin>>a;
-    if(islower(a[0])) a[0]=toupper(a[0]);
+    bool isTrue = true;
     for(int i=1; i<a.size(); i++)
     {
-        if(isupper(a[i])) a[i]=tolower(a[i]);
+        if(a[i] >= 97){
+         isTrue = false;
+         break;
+        }
     }
-    cout<<a<<endl;
+    if(isTrue)
+    {
+        for(int i=0; i<a.size(); i++)
+        {
+            if(a[i]>=97) a[i]=a[i]-32;
+            else a[i]=a[i]+32;
+        }
+        cout<<a<<endl;
+    }
+    else
+    {
+        cout<<a<<endl;
+    }
 }
