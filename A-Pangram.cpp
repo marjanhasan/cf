@@ -2,22 +2,35 @@
 using namespace std;
 int main()
 {
-    int n, a=0;
+    int n;
     cin>>n;
     string s;
     cin>>s;
-    transform(s.begin(), s.end(), s.begin(), ::tolower);
-    //cout<<s;
-    list <string> str;
-    for(auto it:s)
+
+    if(n<26)
     {
-        str.push_back(s);
+        cout << "NO";
+        return 0;
     }
-    str.sort();
-    str.unique();
-    for(auto it : str)
+
+    int c[26]={0};
+    for(int i = 0; i < n; i++)
     {
-        cout<<it<< " ";
+        if(s[i] < 97)
+        {
+            s[i] = s[i] + 32;
+            c[s[i] - 'a'] += 1;
+        }
+        else c[s[i] - 'a'] += 1;
     }
-    cout<<endl;
+    for(int i = 0; i < 26; i++)
+    {
+        if(c[i] == 0)
+        {
+            cout << "NO";
+            return 0;
+        }
+    }
+    cout << "YES";
+    return 0;
 }
